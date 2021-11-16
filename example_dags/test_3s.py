@@ -31,7 +31,7 @@ args = {
 }
 
 dag = DAG(
-    dag_id='test_me_sleep',
+    dag_id='test_me_sleep_3s',
     default_args=args,
     schedule_interval='0 0 * * *',
     dagrun_timeout=timedelta(minutes=60),
