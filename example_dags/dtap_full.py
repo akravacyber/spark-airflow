@@ -75,7 +75,7 @@ def append(path: str, data: str):
         dag=dag
     )
 
-ls('') >> mkdir('dtap_test_dir') >> put('dtap_test_dir/test.txt', 'Hello from DAG') >> cat('dtap_test_dir/test.txt') >> rm('dtap_test_dir') >> put(str(datetime.utcnow()) + '.txt', str(datetime.utcnow()))
+ls('') >> mkdir('dtap_test_dir') >> put('dtap_test_dir/test.txt', 'Hello from DAG') >> cat('dtap_test_dir/test.txt') >> rm('dtap_test_dir') >> put(str(datetime.now().timestamp()).replace('.', '') + '.txt', str(datetime.utcnow()))
 
 if __name__ == "__main__":
     dag.cli()
