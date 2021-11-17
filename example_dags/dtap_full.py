@@ -63,7 +63,7 @@ def mkdir(path: str):
 
 def put(path: str, data: str):
     return BashOperator(
-        task_id='put_' + path.replace('/', '_').replace('.', '_') + '_bash_op_dtap',
+        task_id='p_' + path.replace('/', '_').replace('.', '_') + '_d',
         bash_command='echo "' + data + '" | hadoop fs -put - dtap://TenantStorage/' + path,
         dag=dag
     )
