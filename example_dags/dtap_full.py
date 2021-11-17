@@ -20,7 +20,6 @@ from datetime import datetime, timedelta
 
 from airflow import DAG
 from airflow.operators.bash import BashOperator
-import random
 
 args = {
     'owner': 'airflow',
@@ -72,17 +71,11 @@ def put(path: str, data: str):
 def append(path: str, data: str): 
     return BashOperator(
         task_id='append_' + path.replace('/', '_').replace('.', '_') + '_bash_op_dtap',
-        bash_command='echo "' + data + '" | hadoop fs -put - dtap://TenantStorage/' + path,
+        bash_command='echo "' + data + '" | hadoop fs -appendToFile - dtap://TenantStorage/' + path,
         dag=dag
     )
 
-filename=str(random.randint(0, 99999999))
-data=str(datetime.utcnow())
-
-test=str(random.randint(0, 999))
-
-mkdir('dtap_test_dir') >> put('dtap_test_dir/test' + test + '.txt', 'Hello from DAG') >> cat('dtap_test_dir/test' + test + '.txt') >> rm('dtap_test_dir') >> append(filename, data)
-
+ls('') >> mkdir('dtap_test_dir') >> put('dtap_test_dir/test.txt', 'Hello from DAG') >> cat('dtap_test_dir/test.txt') >> rm('dtap_test_dir') >> append('test-dag-af.txt', str(datetime.utcnow()))
 
 if __name__ == "__main__":
     dag.cli()
