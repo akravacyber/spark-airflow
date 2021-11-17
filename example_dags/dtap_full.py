@@ -43,7 +43,7 @@ def ls(path: str):
 def rm(path: str):
     return BashOperator(
         task_id='rm_' + path.replace('/', '_').replace('.', '_') + '_bash_op_dtap',
-        bash_command='hadoop fs -rm dtap://TenantStorage/' + path,
+        bash_command='hadoop fs -rm -r dtap://TenantStorage/' + path,
         dag=dag
     )
 
