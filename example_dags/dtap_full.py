@@ -35,42 +35,42 @@ dag = DAG(
 
 def ls(path: str):
     return BashOperator(
-        task_id='ls_' + path + '_bash_op_dtap',
+        task_id='ls_' + path.replace('/', '_').replace('.', '_') + '_bash_op_dtap',
         bash_command='hadoop fs -ls dtap://TenantStorage/' + path,
         dag=dag
     )
 
 def rm(path: str):
     return BashOperator(
-        task_id='rm_' + path + '_bash_op_dtap',
+        task_id='rm_' + path.replace('/', '_').replace('.', '_') + '_bash_op_dtap',
         bash_command='hadoop fs -rm dtap://TenantStorage/' + path,
         dag=dag
     )
 
 def cat(path: str):
     return BashOperator(
-        task_id='cat_' + path + '_bash_op_dtap',
+        task_id='cat_' + path.replace('/', '_').replace('.', '_') + '_bash_op_dtap',
         bash_command='hadoop fs -cat dtap://TenantStorage/' + path,
         dag=dag
     )
 
 def mkdir(path: str):
     return BashOperator(
-        task_id='mkdir_' + path + '_bash_op_dtap',
+        task_id='mkdir_' + path.replace('/', '_').replace('.', '_') + '_bash_op_dtap',
         bash_command='hadoop fs -mkdir dtap://TenantStorage/' + path,
         dag=dag
     )
 
 def put(path: str, data: str):
     return BashOperator(
-        task_id='put_' + path + '_bash_op_dtap',
+        task_id='put_' + path.replace('/', '_').replace('.', '_') + '_bash_op_dtap',
         bash_command='echo "' + data + '" | hadoop fs -put - dtap://TenantStorage/' + path,
         dag=dag
     )
 
 def append(path: str, data: str): 
     return BashOperator(
-        task_id='append_' + path + '_bash_op_dtap',
+        task_id='append_' + path.replace('/', '_').replace('.', '_') + '_bash_op_dtap',
         bash_command='echo "' + data + '" | hadoop fs -appendToFile - dtap://TenantStorage/' + path,
         dag=dag
     )
