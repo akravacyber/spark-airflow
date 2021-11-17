@@ -78,6 +78,7 @@ def make_test_dtap_operations(ds, **kwargs):
 first = PythonOperator(
     task_id='test_dtap_operations_python',
     python_callable=make_test_dtap_operations,
+    dag=dag
 )
 
 
@@ -91,6 +92,7 @@ def check_hadoop(ds, **kwargs):
 second = PythonOperator(
     task_id='test_dtap_operations_hadoop_from_python',
     python_callable=check_hadoop,
+    dag=dag
 )
 
 first >> second
