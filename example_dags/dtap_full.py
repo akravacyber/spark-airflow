@@ -79,7 +79,7 @@ def append(path: str, data: str):
 filename=str(random.randint(0, 99999999))
 data=str(datetime.utcnow())
 
-ls('') >> mkdir('dtap_test_dir') >> put('dtap_test_dir/test.txt', 'Hello from DAG') >> cat('dtap_test_dir/test.txt') >> rm('dtap_test_dir') >> append(filename, data)
+ls('') >> mkdir('dtap_test_dir') >> put('dtap_test_dir/test.txt', 'Hello from DAG' + str(random.randint(0, 9999))) >> cat('dtap_test_dir/test.txt') >> rm('dtap_test_dir') >> append(filename, data)
 
 
 if __name__ == "__main__":
