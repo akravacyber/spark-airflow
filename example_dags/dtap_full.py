@@ -72,14 +72,14 @@ def put(path: str, data: str):
 def append(path: str, data: str): 
     return BashOperator(
         task_id='append_' + path.replace('/', '_').replace('.', '_') + '_bash_op_dtap',
-        bash_command='echo "' + data + '" | hadoop fs -appendToFile - dtap://TenantStorage/' + path,
+        bash_command='echo "' + data + '" | hadoop fs -put - dtap://TenantStorage/' + path,
         dag=dag
     )
 
 filename=str(random.randint(0, 99999999))
 data=str(datetime.utcnow())
 
-ls('') >> mkdir('dtap_test_dir') >> put('dtap_test_dir/test.txt', 'Hello from DAG') >> cat('dtap_test_dir/test.txt') >> rm('dtap_test_dir') >> put(filename, data)
+ls('') >> mkdir('dtap_test_dir') >> put('dtap_test_dir/test.txt', 'Hello from DAG') >> cat('dtap_test_dir/test.txt') >> rm('dtap_test_dir') >> append(filename, data)
 
 
 if __name__ == "__main__":
