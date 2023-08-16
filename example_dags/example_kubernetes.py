@@ -36,7 +36,13 @@ with DAG(
     dag_id='example_kubernetes_operator',
     default_args=default_args,
     schedule_interval=None,
-    tags=['example']
+    tags=['example'],
+    access_control={
+        'role_hpedemo-user05': {
+            'can_read',
+            'can_edit'
+        }
+    }
 ) as dag:
 
     tolerations = [
