@@ -46,7 +46,7 @@ dag = DAG(
     schedule_interval=timedelta(minutes=10),
     tags=['example'],
     access_control={
-        'role_hpedemo_user04': {
+        'role_hpedemo-user04': {
             'can_read',
             'can_edit'
         }
