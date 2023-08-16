@@ -37,6 +37,16 @@ with DAG(
     default_args=default_args,
     schedule_interval=None,
     tags=['example'],
+    access_control={
+        'role_hpedemo_user02': {
+            'can_read',
+            'can_edit'
+        },
+        'role_hpedemo_user03': {
+            'can_read',
+            'can_edit'
+        }
+    }
 ) as dag:
 
     tolerations = [

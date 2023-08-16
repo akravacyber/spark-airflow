@@ -41,8 +41,17 @@ default_args = {
 }
 
 dag = DAG(
-    'kubernetes_sample', default_args=default_args,
-    schedule_interval=timedelta(minutes=10), tags=['example'])
+    'kubernetes_sample',
+    default_args=default_args,
+    schedule_interval=timedelta(minutes=10),
+    tags=['example'],
+    access_control={
+        'role_hpedemo_user04': {
+            'can_read',
+            'can_edit'
+        }
+    }
+)
 
 start = DummyOperator(task_id='run_this_first', dag=dag)
 
