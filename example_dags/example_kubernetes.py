@@ -39,8 +39,7 @@ with DAG(
     tags=['example'],
     access_control={
         'role_hpedemo-user05': {
-            'can_read',
-            'can_edit'
+            'can_read'
         }
     }
 ) as dag:
