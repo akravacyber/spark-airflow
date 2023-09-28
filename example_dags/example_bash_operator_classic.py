@@ -35,7 +35,13 @@ dag = DAG(
     default_args=args,
     schedule_interval='0 0 * * *',
     dagrun_timeout=timedelta(minutes=60),
-    tags=['example']
+    tags=['example'],
+    access_control={
+        'Segregated User': {
+            'can_read',
+            'can_edit'
+        }
+    }
 )
 
 run_this_last = DummyOperator(
