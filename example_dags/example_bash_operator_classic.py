@@ -44,7 +44,7 @@ dag = DAG(
     # }
 )
 
-run_this_last = DsummyOperator(
+run_this_last = DummyOperator(
     task_id='run_this_last',
     dag=dag,
 )
