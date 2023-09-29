@@ -36,13 +36,13 @@ dag = DAG(
     schedule_interval='0 0 * * *',
     dagrun_timeout=timedelta(minutes=60),
     tags=['example'],
-    access_control={
-        'All': {
-            'can_read',
-            'can_edit',
-            'can_delete'
-        }
-    }
+    # access_control={
+    #     'All': {
+    #         'can_read',
+    #         'can_edit',
+    #         'can_delete'
+    #     }
+    # }
 )
 
 run_this_last = DummyOperator(
