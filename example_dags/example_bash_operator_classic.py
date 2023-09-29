@@ -39,7 +39,8 @@ dag = DAG(
     access_control={
         'All': {
             'can_read',
-            'can_edit'
+            'can_edit',
+            'can_delete'
         }
     }
 )
