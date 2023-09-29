@@ -37,11 +37,11 @@ dag = DAG(
     dagrun_timeout=timedelta(minutes=60),
     tags=['example'],
     access_control={
-        'Admin': {
-            'can_read',
-            'can_edit',
-            'can_delete'
-        }
+        # 'Admin': {
+        #     'can_read',
+        #     'can_edit',
+        #     'can_delete'
+        # }
     }
 )
 
