@@ -37,7 +37,7 @@ dag = DAG(
     dagrun_timeout=timedelta(minutes=60),
     tags=['example'],
     access_control={
-        'All': {
+        'Segregated User': {
             'can_read',
             'can_edit',
             'can_delete'
