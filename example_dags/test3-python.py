@@ -21,6 +21,7 @@ with DAG("test_image_pull",
                                 echo "hello world"
                                 """
                             ],
+                        labels={"sidecar.istio.io/inject": "false"},
                         name="passing-test",
                         task_id="passing-task",
                         on_finish_action="delete_pod",
