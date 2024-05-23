@@ -64,7 +64,7 @@ dag = DAG(
 # spark = open(
 #     "example_spark_kubernetes_operator_pi.yaml").read()
 
-submit = SparkKubernetesOperator(
+submit = SparkKuberneteOperator(
     task_id='spark_pi_submit',
     namespace="sampletenant",
     application_file="example_spark_kubernetes_operator_pi.yaml",
