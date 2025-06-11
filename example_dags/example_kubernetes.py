@@ -57,5 +57,6 @@ with DAG(
         task_id="task",
         get_logs=True,
         is_delete_operator_pod=False,
-        tolerations=tolerations
+        tolerations=tolerations,
+        do_xcom_push=True
     )
