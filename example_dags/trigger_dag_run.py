@@ -1,23 +1,22 @@
 import logging
 
 from airflow import DAG
-from airflow.providers.cncf.kubernetes.operators.kubernetes_pod import KubernetesPodOperator
-from airflow.operators.trigger_dagrun import TriggerDagRunOperator
-from airflow.operators.bash import BashOperator
-from airflow.utils.dates import days_ago
+from airflow.providers.standard.operators.trigger_dagrun import TriggerDagRunOperator
+from airflow.providers.standard.operators.bash import BashOperator
+from datetime import datetime
 
 log = logging.getLogger(__name__)
 
 
 default_args = {
     'owner': 'airflow',
-    'start_date': days_ago(2)
+    'start_date': datetime(2022, 1, 1)
 }
 
 with DAG(
     dag_id='example_dag_trigger_operator',
     default_args=default_args,
-    schedule_interval=None,
+    schedule=None,
     tags=['example'],
 ) as dag:
     

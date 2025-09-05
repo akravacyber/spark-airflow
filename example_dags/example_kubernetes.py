@@ -21,31 +21,23 @@ This is an example dag for using the KubernetesPodOperator.
 import logging
 
 from airflow import DAG
-from airflow.providers.cncf.kubernetes.operators.kubernetes_pod import KubernetesPodOperator
-from airflow.utils.dates import days_ago
+from airflow.providers.cncf.kubernetes.operators.pod import KubernetesPodOperator
+from datetime import datetime
 
 log = logging.getLogger(__name__)
 
 
 default_args = {
     'owner': 'airflow',
-    'start_date': days_ago(2)
+    'start_date': datetime(2022, 1, 1)
 }
 
 with DAG(
     dag_id='example_kubernetes_operator',
     default_args=default_args,
-    schedule_interval=None,
+    schedule=None,
     tags=['example'],
 ) as dag:
-
-    tolerations = [
-        {
-            'key': "key",
-            'operator': 'Equal',
-            'value': 'value'
-        }
-    ]
 
     k = KubernetesPodOperator(
         image="ubuntu:16.04",
@@ -56,6 +48,5 @@ with DAG(
         task_id="task",
         get_logs=True,
         is_delete_operator_pod=False,
-        tolerations=tolerations,
         do_xcom_push=True
     )
