@@ -32,3 +32,25 @@ with DAG(
     )
 
     before >> after
+
+with DAG(
+    dag_id='test_2_dag',
+    default_args=default_args,
+    schedule=None,
+    tags=['example'],
+) as dag:
+    
+    before = BashOperator(
+        task_id='before_2_dag',
+        bash_command='echo before triggering 2 && sleep 3',
+        dag=dag,
+    )
+
+    after = BashOperator(
+        task_id='after_2_dag',
+        bash_command='echo after triggering 2 && sleep 3',
+        dag=dag,
+    )
+
+    before >> after
+
