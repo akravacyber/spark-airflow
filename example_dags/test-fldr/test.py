@@ -1,22 +1,18 @@
 from airflow import DAG
-from airflow.models.param import Param
-from airflow.operators.python import (
-    ExternalPythonOperator,
+from airflow.providers.standard.operators.python import (
     PythonOperator,
-    PythonVirtualenvOperator,
-    is_venv_installed,
 )
-from airflow.utils.dates import days_ago
 import requests
 import json
 import urllib3
 import time
+from datetime import datetime
 from airflow.exceptions import AirflowFailException
 
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': days_ago(1),
+    'start_date': datetime(2024, 6, 1),
     'email': ['airflow@example.com'],
     'email_on_failure': False,
     'email_on_retry': False,

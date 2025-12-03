@@ -21,15 +21,15 @@ This is an example dag for using the KubernetesPodOperator.
 import logging
 
 from airflow import DAG
-from airflow.providers.cncf.kubernetes.operators.kubernetes_pod import KubernetesPodOperator
-from airflow.utils.dates import days_ago
+from airflow.providers.cncf.kubernetes.operators.pod import KubernetesPodOperator
+from datetime import datetime
 
 log = logging.getLogger(__name__)
 
 
 default_args = {
     'owner': 'airflow',
-    'start_date': days_ago(2)
+    'start_date': datetime(2024, 6, 1),
 }
 
 with DAG(

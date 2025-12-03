@@ -21,13 +21,13 @@
 from datetime import timedelta
 
 from airflow import DAG
-from airflow.operators.bash import BashOperator
-from airflow.operators.dummy_operator import DummyOperator
-from airflow.utils.dates import days_ago
+from airflow.providers.standard.operators.bash import BashOperator
+from airflow.providers.standard.operators.empty import EmptyOperator
+from datetime import datetime
 
 args = {
     'owner': 'airflow',
-    'start_date': days_ago(2),
+    'start_date': datetime(2024, 1, 1),
 }
 
 dag = DAG(
@@ -38,7 +38,7 @@ dag = DAG(
     tags=['example']
 )
 
-run_this_last = DummyOperator(
+run_this_last = EmptyOperator(
     task_id='run_this_last',
     dag=dag,
 )
