@@ -57,7 +57,7 @@ default_args = {
 dag = DAG(
     'spark_pi',
     default_args=default_args,
-    schedule_interval=timedelta(days=1),
+    schedule=timedelta(days=1),
     tags=['example']
 )
 

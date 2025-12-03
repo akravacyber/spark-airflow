@@ -50,7 +50,7 @@ dag = DAG(
     'user01_ezpresto',
     default_args=default_args,
     description='User01 Query',
-    schedule_interval='*/15 * * * *',
+    schedule='*/15 * * * *',
     tags=['ezaf', 'ezpresto'],
     render_template_as_native_obj=True,
     catchup=False,
