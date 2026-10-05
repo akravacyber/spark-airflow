@@ -37,6 +37,7 @@ with DAG(
     default_args=default_args,
     schedule=None,
     tags=['example'],
+    access_control={'All': {'DAGs': {'can_read', 'can_edit', 'can_delete'}}}
 ) as dag:
 
     tolerations = [
